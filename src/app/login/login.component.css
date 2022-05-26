@@ -1,0 +1,17 @@
+.mat-raised-button {
+    background-color: black;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: none;
+  }
+  .mat-grid-list{
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 1300px;
+    
+    margin-top: 30vh;
+  }
+  .x{
+    background-color: black;
+  }

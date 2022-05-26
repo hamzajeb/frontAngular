@@ -1,0 +1,23 @@
+td {
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px;   
+  }
+  
+  td:first-child {
+    padding-left:20px;
+    padding-right:0;
+  }
+
+  .scroller {
+    width: 40vw;
+    height: 30vh;
+    overflow-y: scroll;
+  
+
+  }
+
+  .red-icon {
+    color: rgb(233, 17, 17);
+}
+

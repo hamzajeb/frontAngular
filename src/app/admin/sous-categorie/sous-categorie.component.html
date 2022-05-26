@@ -1,0 +1,101 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-nav-admin></app-nav-admin>
+
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center;font-family: 'Oleo Script Swash Caps';font-size: 30px;">Sous-Catégories</h1>
+<div style="float:right;margin-bottom: 20px;margin-right: 10vw;">
+  <button type="button" style="font-size: 18px;padding: 8px;"  mat-raised-button (click)="openModal(template)">Ajouter Sous-Catégorie</button>
+</div>
+<!-- <table  class="table table-hover" style="width:80vw;margin-left: 15vw;margin-top: 90px;">
+ 
+ 
+      <tr style="text-align:center">
+        <th scope="col">Id_Sous-catégorie</th>
+        <th scope="col">Nom_Sous-catégorie</th>
+        <th scope="col">Id_Catégorie</th>
+        <th scope="col">Lien</th>
+        <th scope="col">Action</th>
+      </tr>
+    
+      <tr style="text-align:center" *ngFor="let Souscategorie of listeSousCategories">
+        
+        <td>{{Souscategorie.id}}</td>
+        <td>{{Souscategorie.nom}}</td>
+        <td>{{Souscategorie.categorie_id}}</td>
+        <td>{{Souscategorie.link}}</td>
+        <td style="width:70%;">
+          <button  style="margin-right:12px" class="btn btn-info" (click)="openModal(template,Souscategorie)">Modifier </button>
+     
+          <button  class="btn btn-warning" (click)="deleteSousCategorie(Souscategorie.id)">Supprimer</button>
+        </td>
+     
+      <tr>
+   
+  </table> -->
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id_Sous_Categorie</th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nom_Catégorie </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.nom}} </td>
+    </ng-container>
+    <ng-container matColumnDef="categorie_id">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id_Catégorie </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.categorie_id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Action</th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;">
+          <button style="margin-right: 5vw;" mat-raised-button class="primary" (click)="openModal(template,element)">Modifier</button>
+          <button mat-raised-button color="warn" (click)="deleteSousCategorie(element.id)">Supprimer</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+   
+  </table>
+  
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 style="font-weight: bold;text-align: center;font-size:20px" class="modal-title pull-left">{{titreModal}}</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    
+    <div class="modalBody">
+      <div class="form-group" style="margin-left: 30px;margin-top: 10px;margin-right: 30px">
+        <label style="font-weight: bold;font-size:15px">Nom du Sous-catégorie</label>
+        <input style="width:30vw;margin-bottom: 15px;" type="text" class="form-control" placeholder="Entrez le nom du Sous catégorie " [formControl]="nom">
+        <label style="font-weight: bold;font-size:15px">Choisir le Nom du catégorie</label><br>
+        <select  style="width:30vw;margin-bottom: 15px;height: 40px;background-color: white;border:none;border-bottom:solid 1px rgb(184, 184, 184) ;" class="form-select" aria-label="Default select example" [formControl]="categorie">
+          <option [ngValue]="null" disabled>Select Catégorie</option>
+          <option *ngFor="let cat of listeCategories" [ngValue]="cat.id">{{cat.nom}}</option>
+        </select ><br>
+        <label style="font-weight: bold;font-size:15px">Lien</label>
+        <input style="width:30vw;margin-bottom: 15px;" type="text" class="form-control" placeholder="Entrez le Lien du Sous_categorie " [formControl]="lien">
+        
+        
+        <button type="button" class="btn btn-dark" style="margin-top:20px;float:right;margin-right:50px;margin-bottom:20px" (click)="InsertSousCategorie()">{{titre}}</button>
+      </div>
+    </div>
+ 
+  </ng-template>
+
+  

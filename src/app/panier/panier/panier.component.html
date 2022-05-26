@@ -1,0 +1,57 @@
+<app-nav-bar></app-nav-bar>
+<br> <br><br><br><br><br><br><br>
+<body>
+    
+
+    <h1 class="titre">Mon Panier</h1>
+    
+    <table style="  margin-left: auto;
+    margin-right: auto;">
+        <tr style="border-bottom:solid white 4px;">
+            <td class="col">Produit</td>
+            <td class="col">Taille</td>
+            <td class="col">Prix</td>
+            <td class="col">Quantité</td>
+            <td class="col">SousTotal</td>
+            <td class="col">Supprimer</td>
+            
+        </tr>
+    
+        <tr class="ligne" *ngFor="let produit of panierUser">
+            <td class="colOne"><img class="imageProd" src="{{imageDirectorypath}}{{produit.produit_img}}">
+            <h4 class="titreProd">{{produit.produit_nom}}</h4>
+            </td>
+            <td class="colTwo">
+                <h4>{{produit.taille}}</h4>
+            </td>
+            <td class="colTrois">
+                <h4>{{produit.produit_prix}} MAD</h4>
+            </td>
+            <td >
+                <h4 style="margin-left:2vw ;">{{produit.quantite}}</h4>
+               
+            </td>
+            <td class="colTrois">
+                <h4>{{produit.total}} MAD</h4>
+            </td>
+            <td>
+                <button style="border:none;background-color:transparent" (click)="deletePanier(produit.id)"><mat-icon>delete</mat-icon></button>
+                </td>
+        </tr>
+
+    
+        
+
+
+       
+    
+    </table>
+  
+    <h1 style="padding-top:5vh;font-size: 20px;padding-bottom:5vh;margin-left: 5vw;font-family:cursive">Total : {{prixTot}} MAD   <button mat-button style="float:right;margin-right: 5vw;margin-top:-10px;background-color: rgb(100, 100, 100);color: white;" (click)="passerCommande()">Passer la commande</button></h1>
+    
+    
+
+
+
+    </body>
+    

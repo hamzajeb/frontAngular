@@ -1,0 +1,93 @@
+.header-top {
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    width: 100vw;
+}
+
+
+.header-alert-news {
+    text-align: center;
+    padding: 10px 10px;
+    border-bottom: solid rgb(248, 248, 248);
+    border-bottom-width: 1px;
+}
+
+
+.header-alert-news b {
+    font-size: 15px;
+    color: rgb(111, 110, 110);
+
+}
+
+.logo {
+    width: 300px;
+    margin-top: 20px;
+    display: inline;
+
+
+}
+
+.black-icon {
+    color: black;
+}
+
+.header-demi-top {
+
+    display: inline-flex;
+
+
+}
+
+
+.header-recherche {
+    display: inline;
+    margin-left: 12vw;
+    position: absolute;
+    margin-top: 30px;
+
+
+}
+
+.header-actions {
+    display: inline;
+    margin-left: 53vw;
+    position: absolute;
+    margin-top: 40px;
+}
+
+.action {
+    margin-left: 2vw;
+    font-size: 10px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    cursor: pointer;
+
+}
+
+.liste-categories {
+    display: inline-flex;
+    margin-left: 10vw;
+    margin-top: 20px;
+
+
+}
+
+.categorie {
+    display: inline;
+    margin-right: 10vw;
+
+}
+
+.categorie-titre {
+    text-decoration: none;
+    font-size: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: gray;
+    margin-right: 8vw;
+
+}
+
+.categorie-titre:hover {
+    padding-bottom: 10px;
+    border-bottom: gray solid;
+}

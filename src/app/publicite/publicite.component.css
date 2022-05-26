@@ -1,0 +1,19 @@
+.pub{
+    font-family: cursive;
+    font-size: 30px;
+    color: rgb(77, 75, 75);
+    margin : 20px;
+    line-height: 40px;
+    text-align: center;
+}
+#img-pub1,#img-pub2,#img-pub3,#img-pub4{
+    height:40vh;
+    margin:4.5vw
+}
+#img-reduction{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+}

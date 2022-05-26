@@ -1,0 +1,41 @@
+h4{
+    margin-top: 0 ;
+    margin-bottom: 10px;
+}
+
+.total{
+    font-size: 3em;
+}
+
+.mat-icon,
+.description{
+    color:rgb(13, 255, 13);
+    font-size: 2em;
+}
+
+.mat-icon{
+    position: relative;
+    padding: 0 20px;
+    top:5px;
+}
+
+.notify {
+    /* transform-origin: 50% 180px; */
+    animation: x 2s ease;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes x {
+    0% {
+        font-size: 70px
+    }
+
+    50% {
+        font-size: 50px
+    }
+
+  
+    100% {
+        font-size: 70px;
+    }
+  }

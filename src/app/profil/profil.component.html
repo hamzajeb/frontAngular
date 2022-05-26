@@ -1,0 +1,100 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<div style="padding: 0 90px;" class="a">
+    <br>
+    <p style="display:block;font-size: 30px;text-align:center;font-family: 'Oleo Script Swash Caps'">Mon Profile</p>
+    <p  *ngIf="profile==0;else vide" style="display:block;font-size: 20px;text-align:center;font-family: 'Oleo Script Swash Caps'">vous êtes notre client depuis {{date}}</p>
+    <ng-template #vide><p style="display:block;"></p></ng-template>
+    <br>
+    <div>
+    <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;"> <span style="font-weight: bold;">Nom : </span>{{nom}}</p>
+    <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;"><span style="font-weight: bold;">Prenom : </span>{{prenom}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;"><span style="font-weight: bold;">Email : </span> {{email}}</p>
+        <p *ngIf="profile==0;else admin" style="display:inline-block;font-size: 20px;text-align: right;width: 50%;"><span style="font-weight: bold;">Profile : </span>Client</p>
+        <ng-template #admin>
+            <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;"><span style="font-weight: bold;">Profile : </span> Admin</p>
+        </ng-template>
+    </div>
+    <mat-divider></mat-divider> 
+    <br>
+    <div>
+        <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;"><span style="font-weight: bold;">Ville : </span>{{ville}}</p>
+        <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;"><span style="font-weight: bold;">Telephone : </span>{{telephone}}</p>
+        </div>
+    <mat-divider></mat-divider>    
+</div>
+
+<div *ngFor="let commandeUser of commandesUser;index as i" class="b">
+    
+    <div style="font-family: 'Oleo Script Swash Caps';padding: 0 90px;margin-bottom:10vh;" >
+        <br>
+        <p style="display:block;font-size: 30px;text-align:center;font-family: 'Oleo Script Swash Caps';margin-bottom: 5vh;">Ma Commande {{i+1}} </p>
+
+        <p style="float: left;font-size:15px">Numéro de commande :{{commandeUser.id}}</p>
+        
+        <table style="width:100%;margin-top:5vh">
+            <!-- <p style="float: right;font-size:15px">Date de commande : {{commandeUserC.created_at}}</p> -->
+            <tr>
+                <td>
+                    <p style="font-size:20px">
+                        Produit
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:20px">
+                        Quantite
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:20px">
+                        Prix Unitaire
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:20px">
+                        Sub Total
+                    </p>
+                </td>
+            </tr>
+    
+            <tr *ngFor="let commandeUserC of commandeUser.commande">
+                <td>
+                    <p style="font-size:15px;font-family: Arial, Helvetica, sans-serif;">
+                        {{commandeUserC.nom_produit}}
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:15px;font-family: Arial, Helvetica, sans-serif;">
+                        {{commandeUserC.quantite}}
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:15px;font-family: Arial, Helvetica, sans-serif;">
+                        {{commandeUserC.prix_unitaire}}
+                    </p>
+                </td>
+                <td>
+                    <p style="font-size:15px;font-family: Arial, Helvetica, sans-serif;">
+                        {{commandeUserC.prix_unitaire*commandeUserC.quantite}}
+                       
+                    </p>
+                </td>
+            </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td style="font-size:15px">Total : <span style="font-family: Arial, Helvetica, sans-serif;">{{commandeUser.prix}} MAD</span></td>
+            </tr>
+        </table>
+        
+    </div>
+    </div>
+            
+    
+    
+    

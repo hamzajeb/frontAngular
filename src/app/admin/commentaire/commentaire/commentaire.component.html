@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-nav-admin></app-nav-admin>
+<br>
+<br>
+<br> <br>
+
+
+
+
+  <table style="margin-left: 8vw;width:70vw;" *ngFor="let commentaire of commentaires">
+    <tr>
+        <td>
+            <div >
+                <table style="border-radius:20px;border:solid 2px rgb(197, 193, 193);margin-left:10vw">
+                    <tr *ngIf="commentaire.commentaires.length > 0" >
+                        <td><img mat-card-image style="width: 300px;height: 350px;" src="{{imageDirectorypath}}{{commentaire.produit.image1}}" alt="produitImage">
+                           <span style="font-size: 25px ;font-weight:bold;position:absolute;margin-top:5vh;margin-left:3vw">{{commentaire.produit.nom}} </span> 
+                        </td>
+                         <td>
+                           <div class="scroller" style="border-radius: 10px;padding:10px">
+                              <table  style="width:100%;"  >
+                                  <tr   *ngFor ="let comm of commentaire.commentaires" >
+                                    <td style="border-bottom:solid 1px rgb(177, 175, 175)"  id="comm">
+                                      <div style="text-align:left;padding-right:10vw;">
+                                        <mat-icon style="vertical-align:middle">account_circle</mat-icon>
+                                        <button (click)="deleteCommentaire(comm.id)" style="background-color: white;border:none;float:right;"><mat-icon class="red-icon">delete</mat-icon></button>
+                                        <span> <strong style="opacity:0.9;">{{comm.user_nom}} {{comm.user_prenom}}</strong></span>
+                                       </div>
+                                      <div style="padding-left: 10px;margin-top:1vh">{{comm.contenu}}</div>
+                                      <div style="text-align:right;font-size: 10px;">{{comm.created_at}}</div>
+                                  </td>            
+                                  </tr>
+                  
+                                  
+                  
+                              </table>
+                           </div>
+                         </td>
+                      
+                        
+                      
+                    </tr> 
+                </table>
+            </div>
+        </td>
+    </tr>
+      
+  </table>
+    
+
+
+  
+            

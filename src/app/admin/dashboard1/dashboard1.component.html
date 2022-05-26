@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-nav-admin></app-nav-admin>
+
+<br>
+<br>
+<br>
+<br>
+<div *ngIf="x==1,else j">
+<mat-grid-list cols="2"  rowHeight="57vh" [gutterSize]="'20px'" style="width:90vw;margin:3vh auto 0 7vw">
+    <mat-grid-tile style="box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;">
+            <app-dashboard2></app-dashboard2>
+            <!-- kkkkkkkkkkkkkk -->
+    </mat-grid-tile>
+    
+
+        <mat-grid-tile style="box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;" >
+        <highcharts-chart 
+        [Highcharts]="Highcharts"
+        [options]="chartOptions"
+        style="width: 100%; height: 350px; display: block;margin-bottom: 20px;"
+        ></highcharts-chart>
+        </mat-grid-tile>
+
+</mat-grid-list>
+
+<mat-grid-list cols="3"  rowHeight="75vh" [gutterSize]="'20px'" style="width:90vw;margin:3vh auto 4vh 7vw">
+        <mat-grid-tile style="box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;">
+                <!-- <div style="width: 90%;padding:5%;">
+                <p style="font-family: 'Oleo Script Swash Caps', cursive;font-size: 30px;text-align: left;">Meilleur produit aimee</p>
+                
+                 <mat-divider></mat-divider> 
+                <br> 
+                
+                <p style="font-size: 18px;font-weight:bold;display: inline-block;">{{Fav.produit.nom}}</p>
+                <mat-icon color="primary">trending_up</mat-icon> -->
+                <div class="text" style="width: 90%;padding:5%;vertical-align: middle;">
+                        <h4 style="font-family: 'Oleo Script Swash Caps', cursive;font-size: 30px;text-align: left;">Meilleur produit aimee</h4>
+                        <br>
+                        <mat-divider></mat-divider> 
+                        
+                        <span style="font-size: 17px;font-weight:bold;" class="total">{{Fav.produit.nom}}</span>
+                    
+                        <span>
+                            <mat-icon color="primary" style="margin-right:3vw ;font-size: 37px;">trending_up</mat-icon>
+                        </span>
+                    
+                        <span class="description" style="font-weight: bold;font-size: 30px;">
+                                {{Fav.numbre}}   
+                        </span>
+                        <span >
+                                <mat-icon class="notify"  style="margin-right:3vw ;font-size: 70px;color:red;">favorite</mat-icon>
+                        </span>
+                        <br>
+                        
+                        <br>
+                        <br>
+                        
+                        
+                        <div style="text-align: center;">
+                        <span >
+                             <img style="border-radius: 15px;" src="{{imageDirectorypath}}{{Fav.produit.image1}}" height="280px" width="250px">
+                        </span>
+                       </div>
+                       <br>
+                       <div style="text-align: center;font-weight: bold;">
+                        <span>
+                                {{Fav.produit.detail}}
+                        </span>
+                        </div>
+
+                
+                </div>
+        
+        </mat-grid-tile>
+        
+        <mat-grid-tile style="box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;">
+                <div class="text" style="width: 90%;padding:5%;vertical-align: middle;">
+                        <h4 style="font-family: 'Oleo Script Swash Caps', cursive;font-size: 30px;text-align: left;">Meilleur produit vendue</h4>
+                        <br>
+                        <mat-divider></mat-divider> 
+                        
+                        <span style="font-size: 17px;font-weight:bold;" class="total">{{plusVendu.produit_nom}}</span>
+                    
+                        <span>
+                            <mat-icon color="primary" style="margin-right:3vw ;font-size: 37px;">trending_up</mat-icon>
+                        </span>
+                    
+                        <span class="description" style="font-weight: bold;font-size: 30px;">
+                                {{plusVendu.quantite_total}}   
+                        </span>
+                        <span >
+                                <mat-icon class="notify"  style="margin-right:3vw ;font-size: 70px;color:rgba(151, 151, 206, 0.892);">shop_two</mat-icon>
+                        </span>
+                        <br>
+                        
+                        <br>
+                        <br>
+                        
+                        
+                        <div style="text-align: center;">
+                        <span >
+                             <img style="border-radius: 15px;" src="{{imageDirectorypath}}{{plusVendu.produit_image}}" height="280px" width="250px">
+                        </span>
+                       </div>
+                       <br>
+                       <div style="text-align: center;font-weight: bold;">
+                        <span>
+                                {{plusVendu.produit_detail}}
+                        </span>
+                        </div>
+
+                
+                </div>
+        </mat-grid-tile>
+            <mat-grid-tile style="box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;" >
+                <div class="text" style="width: 90%;padding:5%;vertical-align: middle;">
+                        <h4 style="font-family: 'Oleo Script Swash Caps', cursive;font-size: 30px;text-align: left;">Produit moins vendue</h4>
+                        <br>
+                        <mat-divider></mat-divider> 
+                        
+                        <span style="font-size: 17px;font-weight:bold;" class="total">{{moinsVendu.produit_nom}}</span>
+                    
+                        <span>
+                            <mat-icon color="primary" style="margin-right:3vw ;font-size: 37px;color:red;">trending_down</mat-icon>
+                        </span>
+                    
+                        <span class="description" style="font-weight: bold;font-size: 30px;color:red">
+                                {{moinsVendu.quantite_total}}   
+                        </span>
+                        <span >
+                                <mat-icon class="notify"  style="margin-right:3vw ;font-size: 70px;color:rgb(238, 116, 116);">shop_two</mat-icon>
+                        </span>
+                        <br>
+                        
+                        <br>
+                        <br>
+                        
+                        
+                        <div style="text-align: center;">
+                        <span >
+                             <img style="border-radius: 15px;" src="{{imageDirectorypath}}{{moinsVendu.produit_image}}" height="280px" width="250px">
+                        </span>
+                       </div>
+                       <br>
+                       <div style="text-align: center;font-weight: bold;">
+                        <span>
+                                {{moinsVendu.produit_detail}}
+                        </span>
+                        </div>
+
+                
+                </div>
+            </mat-grid-tile>
+    
+    </mat-grid-list>
+</div>
+<ng-template #j>
+        <div style="position: absolute;top:50%;right:50%;transition:translate(-50%,-50%)">
+                <mat-spinner></mat-spinner>
+        </div>
+</ng-template>

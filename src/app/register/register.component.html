@@ -1,0 +1,83 @@
+<form [formGroup]="login" (ngSubmit)="registerUtilisateur()">
+    <br>
+    <br>
+    <br>
+<div style="font-family: 'Oleo Script Swash Caps', cursive;font-size: 30px;text-align: center;">Nouveau Client <img src=".\assets\images\design\logo1.png" style="vertical-align: middle;" class="logo" alt="logo" width="80"> </div>
+<br>
+<br>
+<div>
+    <mat-form-field appearance="fill" style="width: 14vw;margin-right: 2vw;" >
+        <mat-label>prénom</mat-label>
+        <input required matInput name="prenom"  formControlName="prenom"  [(ngModel)]="utilisateur.prenom">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" style="width: 14vw;">
+        <mat-label>Nom de famille</mat-label>
+        <input required matInput name="nom" formControlName="nom" [(ngModel)]="utilisateur.nom">
+    </mat-form-field>
+</div>
+<div style="margin-left: 2vw;">
+<mat-form-field appearance="fill" style="width: 14vw;margin-right: 2vw;">
+    <mat-label>Sexe</mat-label>
+    <mat-select name="sexe" [(ngModel)]="utilisateur.sexe" required formControlName="sexe">
+      <mat-option value="H"> Homme</mat-option>
+      <mat-option value="F"> Femme</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width: 14vw;margin-right: 2vw;">
+    <mat-label>Ville</mat-label>
+    <mat-select name="ville" [(ngModel)]="utilisateur.ville" required formControlName="ville">
+      
+      <mat-option *ngFor="let ville of villes" [value]="ville">{{ville}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill" style="width: 30vw;">
+        <mat-label>Téléphone Portable</mat-label>
+        <input required matInput name="telephone" [(ngModel)]="utilisateur.telephone" formControlName="telephone">
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill" style="width: 30vw;">
+        <mat-label>E-mail</mat-label>
+        <input required matInput name="email" [(ngModel)]="utilisateur.email" formControlName="email">
+        <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+</div>
+<div  style="width: 30vw;margin-left: 2vw;">
+    <!-- <mat-form-field appearance="fill" style="width: 30vw;">
+        <mat-label>Mot de Passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="utilisateur.password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field> -->
+    <div style="text-align:left ;"><mat-slide-toggle [checked]="showDetails" (change)="toggleChanges($event)" color="primary">Details de strong mot de passe</mat-slide-toggle></div>
+    <mat-form-field appearance="fill" style="width: 30vw" [color]="passwordComponent.color">
+        <mat-label>Mot de Passe</mat-label>
+        <mat-pass-toggle-visibility #toggle matSuffix ></mat-pass-toggle-visibility>
+        <input matInput #password
+               [type]="toggle.type"
+               required
+                name="password" [(ngModel)]="utilisateur.password" formControlName="password">
+        <mat-hint align="end" aria-live="polite" >
+          {{password.value.length}} / {{passwordComponent.max}}
+        </mat-hint>
+      </mat-form-field>
+      <br>
+      <!--@angular-material-extensions/password-strength's main component-->
+      <mat-password-strength #passwordComponent
+                             (onStrengthChanged)="onStrengthChanged($event)"
+                             [password]="password.value" style="width: 30vw">
+      </mat-password-strength>
+      <!--Password's strength info-->
+      <mat-password-strength-info
+        *ngIf="showDetails"
+        [passwordComponent]="passwordComponent" style="width: 30vw">
+      </mat-password-strength-info>
+</div>
+<br>
+<button mat-raised-button color="dark" style="width: 30vw;font-weight: bold;" type="submit">Register</button>
+</form>

@@ -1,0 +1,97 @@
+<div style="width:35vw ;" >
+    <p style="text-align:left;font-family: 'Oleo Script Swash Caps';font-size: 30px">Modifier Produit</p>
+    <mat-divider></mat-divider>
+    <br>
+    <form (ngSubmit)="insertProduit()" [formGroup]="form">
+    <mat-form-field style="width:16.5vw ;margin-right: 2vw;"  appearance="fill">
+        <mat-label>Nom Produit</mat-label>
+        <input matInput name="nom" formControlName="nom" >
+    </mat-form-field>
+    <mat-form-field style="width:16.5vw ;" appearance="fill">
+        <mat-label>Prix</mat-label>
+        <input matInput name="prix" formControlName="prix" type="number">
+    </mat-form-field>
+    <br>
+    
+    
+    
+    <mat-form-field style="width:23vw ;margin-right: 2vw;" appearance="fill">
+        <mat-label>Detail</mat-label>
+        <input matInput name="detail" formControlName="detail" >
+    </mat-form-field>
+    <mat-form-field style="width:10vw ;" appearance="fill">
+        <mat-label>Quantite</mat-label>
+        <input matInput name="quantite" formControlName="quantite" type="number">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width:16.5vw;margin-right: 2vw;" appearance="fill">
+        <mat-label>Categorie</mat-label>
+        <mat-select (selectionChange)="onChange($event.value)">
+          <mat-option *ngFor="let cat of listeCategories" [value]="cat.id" >{{cat.nom}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field style="width:16.5vw ;" appearance="fill" >
+        <mat-label>Sous_Categorie</mat-label>
+        <mat-select [disabled]="false"  formControlName="sous_categorie_id" >
+          <mat-option *ngFor="let s of listeSousCategories2" [value]="s.id">{{s.nom}}</mat-option>
+        </mat-select>
+        <ng-template #infocus1>
+            <mat-select [disabled]="true" >
+                <mat-option *ngFor="let s of listeSousCategories2" [value]="s.id">{{s.nom}}</mat-option>
+              </mat-select>
+        </ng-template>
+    </mat-form-field>
+    <br>
+    <!-- <mat-label>Image 1</mat-label>
+    <input type="file" name="img1">
+    <input class="ng-hide" id="input-file-id" multiple type="file" />
+    <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label> -->
+    <!-- <input type="file" formControlName="image1" name="image1" (change)="uploadimg1($event)">
+    <input type="file" formControlName="image2" name="image2" (change)="uploadimg2($event)">
+    <input type="file" formControlName="image3" name="image3" (change)="uploadimg3($event)"> -->
+    <mat-form-field class="x">
+      <div>
+        <mat-toolbar>
+          <input matInput  [(ngModel)]="fileAttr1" readonly name="name1" formControlName="image1"/>
+          <button mat-flat-button color="primary">Importer Image 1</button>
+        </mat-toolbar>
+        <input
+          type="file" #fileInput4 id="uploadFile" (change)="uploadFileEvt1($event)" name="img1" multiple="multiple" accept="image/*" 
+           />
+      </div>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="x">
+        <div>
+          <mat-toolbar>
+            <input matInput  [(ngModel)]="fileAttr2" readonly name="name2" formControlName="image2"/>
+            <button mat-flat-button color="primary">Importer Image 2</button>
+          </mat-toolbar>
+          <input
+            type="file" #fileInput5 id="uploadFile" (change)="uploadFileEvt2($event)" name="img2" multiple="multiple" accept="image/*" 
+             />
+        </div>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="x">
+        <div>
+          <mat-toolbar>
+            <input matInput  [(ngModel)]="fileAttr3" readonly name="name3"  formControlName="image3" />
+            <button mat-flat-button color="primary">Importer Image 3</button>
+          </mat-toolbar>
+          <input
+            type="file" #fileInput6 id="uploadFile" (change)="uploadFileEvt3($event)" name="img3" multiple="multiple" accept="image/*" 
+            />
+        </div>
+      </mat-form-field>
+      <br>
+    <mat-form-field style="width:35vw ;" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" ></textarea>
+    </mat-form-field> 
+    <div style="width: 35vw;text-align: right;">
+    <button mat-raised-button mat-dialog-close  style="font-weight: bold;font-size: 20px;" type="submit">Ajouter</button>
+    </div>
+    </form>
+    </div>
+    

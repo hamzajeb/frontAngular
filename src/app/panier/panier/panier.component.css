@@ -1,0 +1,70 @@
+.titre{
+    font-family: cursive;
+    text-align: center;
+    padding-top: 5vh;
+    margin-bottom: 10vh;
+    color: rgb(87, 87, 87);
+    font-weight: bold;
+
+}
+
+th, td {
+    padding-left:5.5vw ;
+    padding-right:4vw ;
+    /* text-align: left; */
+    padding-bottom: 2vh;
+}
+
+body{
+    background-image:url("src/assets/images/panier.png");
+    background-size: 100vw;
+    background-repeat: no-repeat;
+
+    
+}
+.col{
+    font-family: cursive;
+    color: rgb(117, 117, 117);
+}
+
+.imageProd{
+    width: 7vw;
+    margin-left: -30px;
+    margin-top: 15px;
+  
+}
+
+.colOne{
+    display: flex;
+    width:10vw
+}
+
+.titreProd{
+    margin-top: 9vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 20vw;
+  
+}
+
+.colTwo{
+    width: 5vw;
+    text-align: center;
+}
+
+.quantite{
+    width: 4vw;
+    height: 4.3vh;
+    
+
+}
+.ligne:hover{
+    background-color: rgb(223, 223, 223);
+}
+
+.ligne{
+    border-bottom: solid rgb(238, 238, 238) 2px;
+}
+
+

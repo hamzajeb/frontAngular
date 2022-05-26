@@ -1,0 +1,62 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<mat-grid-list cols="3" rowHeight="800px" [gutterSize]="'20px'" style="margin-top: 18vh;">
+    <mat-grid-tile *ngFor="let Produit of listeProduit">
+        <!-- <div style="margin:0 35vw;margin-bottom: 200px;"> -->
+            <mat-card class="card"  style="width: 25vw ;">
+            
+                
+                <mat-card-content class="card-main" style="height: 70vh;z-index: 0;">
+                  <!-- <p class="discount">10%</p> -->
+                  <div class="product-container">
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image1}}" ></div>
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image2}}"></div>
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image3}}" ></div>
+                  </div>
+                  <div class="image" >
+                      <img mat-card-image  *ngIf="test==true;else x" src="{{imageDirectorypath}}{{Produit.image1}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      <ng-template #x>
+                        <img mat-card-image *ngIf="Produit.chrono_hour==0;else x1"  src="{{imageDirectorypath}}{{Produit.image1}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      </ng-template>
+                      <ng-template #x1>
+                        <img mat-card-image  src="{{Produit.chrono_hour}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      </ng-template>
+                      
+                  </div>
+                  <div class="cart-item" style="width:27vw;margin-left:-15px">
+                      <ul >
+                        <li >
+                          <a *ngIf="non_auth()==false;else x5" class='a'    style="width: 50%;text-align:center"  (click)="redirect()"><mat-icon style="font-size: 30px;display:inline-block;cursor: pointer;
+                            vertical-align: middle;line-height: normal;margin-bottom:13px;" >favorite</mat-icon></a>
+                          <ng-template #x5>
+                          <a *ngIf="favorites(Produit)==true;else x2" class='a'  [ngStyle]="{'color':Produit.chrono_min }"  style="width: 50%;text-align:center"  (click)="dejaFavoris(Produit)"><mat-icon style="font-size: 30px;display:inline-block;cursor: pointer;
+                          vertical-align: middle;line-height: normal;margin-bottom:13px;" [ngStyle]="{'color':style1?'red':Produit.chrono_min }"  [ngClass]="{'notify':notify}">favorite</mat-icon></a>
+                          </ng-template>
+                          <ng-template #x2>
+                         <a class='a' [ngStyle]="{'color':Produit.chrono_min}"  style="width: 50%;text-align:center;"  (click)="ajouterFavoris(Produit)"><mat-icon style="font-size: 30px;display:inline-block;cursor: pointer;
+                            vertical-align: middle;line-height: normal;margin-bottom:13px;" [ngClass]="{'notify':notify}">favorite</mat-icon></a>
+                          </ng-template>
+                          </li>
+                          <li><a class='b'  (click)="getId(Produit)"  style="width: 50%;text-align:center" ><mat-icon style="font-size: 30px;display:inline-block;
+                            vertical-align: middle;line-height: normal;margin-bottom:13px ;" >shopping_basket</mat-icon></a></li>
+                      </ul>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions >
+                    <div class="x" style="text-align:center;font-family: 'Lobster', cursive;font-size: 25px;">{{Produit.nom}}</div>
+                    <br>
+                    <p style="text-align:center;font-size: 14px;">{{Produit.detail}}</p>
+                    <div style="text-align: center;">
+                      <button  mat-icon-button style="color: gold;"  *ngFor="let r of ratingArr;index as i" >
+                        <mat-icon>star</mat-icon>
+                      </button>
+                    </div>
+                    <br>
+                    <p style="text-align:center;font-weight: bold;font-size: 18px;">{{Produit.prix}} MAD</p>
+                    <!-- <div>{{rating}}</div> -->
+                </mat-card-actions>
+              </mat-card>
+            <!-- </div> -->
+        </mat-grid-tile>
+
+  </mat-grid-list>

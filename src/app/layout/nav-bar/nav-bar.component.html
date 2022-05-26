@@ -1,0 +1,103 @@
+<header>
+
+    <div class="header-top" >
+        <div class="container">
+    
+
+            <div class="header-demi-top">
+                <div class="container">
+                    <a href="#" class="header-logo">
+                        <img src=".\assets\images\design\logo.png" class="logo" alt="logo" width="150">
+                    </a>
+                    <div class="header-recherche">
+                        <mat-form-field style="width:400px"> 
+                            
+                            <input matInput placeholder="Rechercher" >
+
+                        </mat-form-field>
+                        <button mat-flat-button color="basic" id="recherche-btn">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </div>
+                    <div class="header-actions">
+                        <a [routerLink]="['/login']" class="action" *ngIf="testconnexion()==false">
+                            <mat-icon class="black-icon" id="personne">person_outline</mat-icon>
+                        </a>
+                        <a class="action" *ngIf="testconnexion()==true" [matMenuTriggerFor]="menu" style="font-size:30px;font-family: 'Oleo Script Swash Caps', cursive ;">
+                            {{prenom}}
+                        </a>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item [routerLink]="['/profil']" >
+                                <mat-icon>person_outline</mat-icon>
+                                Votre Profile
+                            </button>
+                            <button mat-menu-item *ngIf="admin()==true"  (click)="gestion()" >
+                                <mat-icon>settings</mat-icon>
+                                gestion
+                            </button>
+                            <button mat-menu-item (click)="Logout()" >
+                                <mat-icon>exit_to_app</mat-icon>
+                                Deconnexion
+                            </button>
+                            
+                        </mat-menu>
+                        <!-- <a routerLink="login" class="action" *ngIf="testconnexion()==true">
+                            <a class="nav-link active" *ngIf="testconnexion()==true" (click)="Logout()" aria-current="page" routerLink="public">Logout</a>
+                            <mat-icon class="black-icon" id="personne">person_outline</mat-icon>
+                        </a> -->
+
+                        <a  class="action">
+                            <mat-icon class="black-icon" matBadge={{y()}} [routerLink]="['/articlechrono']" matBadgeColor="warn">access_alarm</mat-icon> 
+                            
+                        </a>
+
+                        <a   class="action" >
+                            <mat-icon  *ngIf="testconnexion()==false,else second" class="black-icon" matBadge=0 matBadgeColor="warn">favorite_border</mat-icon>
+                            <ng-template #second>
+                                <mat-icon (click)="j()"  class="black-icon" matBadge={{x()}} [routerLink]="['/favoris']" matBadgeColor="warn">favorite_border</mat-icon>
+                            </ng-template>
+                            
+                            
+                        </a>
+
+                        <button style="border:none;background-color:white" (click)="getPanier()" class="action">
+                            <mat-icon class="black-icon" matBadge={{z()}} matBadgeColor="warn">shopping_cart</mat-icon>
+                           
+                        </button >
+                    </div>
+
+                    <nav class="nav-bar"></nav>
+                    <ul class="liste-categories">
+
+                        
+                        <div *ngFor="let categorie of listeSousCategories">
+                           
+                            <button *ngIf="categorie.sous_categorie.length > 0" class="categorie-titre" mat-button [matMenuTriggerFor]="menu" >{{categorie.nom}}
+                            </button>
+                            <button *ngIf="categorie.sous_categorie.length == 0" class="categorie-titre" mat-button  >{{categorie.nom}}
+                            </button>
+                           
+                            <mat-menu #menu="matMenu">
+                                <div *ngFor="let souscategorie of categorie.sous_categorie">
+                                    
+                                    <button [routerLink]="['/articleComponent', souscategorie.id]"  mat-menu-item>{{souscategorie.nom}}</button>
+                                </div>
+                            </mat-menu>
+                       
+
+
+
+
+
+
+
+                        </div>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

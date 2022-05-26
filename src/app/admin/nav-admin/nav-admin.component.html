@@ -1,0 +1,81 @@
+<p>
+    <mat-toolbar class="mat-toolbar" style="position:fixed;margin-top: -15px;z-index: 3;">
+        <div style="display: block;margin-left: auto;">
+    <img style="width:100px;" src="../assets/images/design/logoGris.png" alt="">
+      </div>
+      <button style="display: block;
+      margin-left: auto;background-color: white;border-radius: 5px;" (click)="Logout()"><mat-icon>logout</mat-icon></button>
+      
+    </mat-toolbar>
+</p>
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''"style="z-index: 3;">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()"><mat-icon>menu</mat-icon></button>
+        <div class="logo-text" *ngIf="collapsed">Admin</div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()" >
+            <mat-icon class="icon">close</mat-icon>
+        </button>
+
+    </div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" [routerLink]="['/dashboard1']" routerLinkActive="router-link-active" >
+            <a class="sidenav-nav-link" routerLinkActive="active">
+                <mat-icon class="sidenav-link-icon">home</mat-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">Dashbroad</span>
+            </a>
+
+        </li>
+        <li class="sidenav-nav-item" [routerLink]="['/categorie']" routerLinkActive="router-link-active" >
+            <a class="sidenav-nav-link"
+            routerLinkActive="active"
+            >
+                <mat-icon class="sidenav-link-icon">apps</mat-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">Categorie
+                </span>
+            </a>
+
+        </li>
+        <li class="sidenav-nav-item" [routerLink]="['/Souscategorie']" routerLinkActive="router-link-active" >
+            <a class="sidenav-nav-link"
+            routerLinkActive="active"
+            >
+                <mat-icon class="sidenav-link-icon">add_to_photos</mat-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">Sous Catégorie
+                </span>
+            </a>
+
+        </li>
+        <li class="sidenav-nav-item" [routerLink]="['/card']" routerLinkActive="router-link-active" >
+            <a class="sidenav-nav-link"
+            routerLinkActive="active"
+            >
+                <mat-icon class="sidenav-link-icon">filter_none</mat-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">Produits
+                </span>
+            </a>
+
+        </li>
+
+
+        <li class="sidenav-nav-item" [routerLink]="['/Commentaire']" routerLinkActive="router-link-active" >
+            <a class="sidenav-nav-link"
+            routerLinkActive="active"
+            >
+                <mat-icon class="sidenav-link-icon">comment</mat-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">Commentaire
+                </span>
+            </a>
+
+        </li>
+    
+    <li class="sidenav-nav-item" [routerLink]="['/chrono']" routerLinkActive="router-link-active" >
+        <a class="sidenav-nav-link" routerLinkActive="active">
+
+            <mat-icon class="sidenav-link-icon">timer</mat-icon>
+            <span class="sidenav-link-text" *ngIf="collapsed">Promos
+            </span>
+        </a>
+
+    </li>
+    </ul>
+</div>

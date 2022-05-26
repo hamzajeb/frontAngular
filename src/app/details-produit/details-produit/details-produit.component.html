@@ -1,0 +1,163 @@
+
+<div *ngIf="load">
+    <table>
+  
+      <td >
+       <div class="small-container single-product">
+       <img  [src]="image" width="80%" id="ProductImg" style="margin-left:2.5vw !important">
+  
+       <div class="small-img-row">
+           <div class="smal-img-col" >
+               <button class="imageBtn" style="width:5vw" (click)="one()">
+               <img  style="width:5vw" src={{imageDirectorypath}}{{produit.image1}} >
+              </button>
+           </div>
+           <div class="smal-img-col">
+              <button class="imageBtn" style="width:5vw" (click)="two()">
+              <img style="width:5vw" src={{imageDirectorypath}}{{produit.image2}}   >
+              </button>
+          </div>
+          <div class="smal-img-col">
+              <button class="imageBtn" style="width:5vw" (click)="three()">
+              <img style="width:5vw" src={{imageDirectorypath}}{{produit.image3}}  >
+          </button>
+          </div>
+         </div>
+       </div>
+       </td>
+  
+       <td style="width:40vw ;">
+     <div style="position:absolute; margin-left: 1vw;margin-top: 4vh;">
+           <p>{{produit.sous_categorie}}</p>
+           <p style="font-size: 30px;">{{produit.nom}}</p>
+  
+           <div style="margin-top: 20px;">
+             <b >Détails du produit :</b>
+             <p style="line-height:1.7em;;width:30vw">{{produit.description}}
+           
+          </p>
+        </div>
+          <div style="text-align: left;" *ngIf="produit.is_promo==1;else x">
+            <p style="display:inline-block;text-align:center;font-weight: bold;font-style: italic;font-size: 22px;color:rgb(21, 210, 21);margin-right: 20px;" >Prix : {{produit.nouveauPrix}} MAD</p>
+            <p style="display:inline-block;text-align:center;font-style: italic;font-size: 15px;text-decoration: line-through;">{{produit.prix}} MAD</p>
+          </div>
+            <ng-template #x>
+              <b style="font-size:21px ;margin-top:3vh;">Prix : {{produit.prix}} MAD</b>
+            </ng-template>
+            
+  
+       
+    
+    
+  <div  style="margin-top: 1vh;margin-right: 0px;">
+      
+      
+             
+        
+            <form >
+             
+             
+                   <table >
+             
+                     <td >
+                       <b>Taille: </b>
+                     </td>
+                    
+  
+                 <td><div class="formrow" >
+                  
+                   <input class="checkbox" type="radio" name="check" value="XS" id="check1" [formControl]="taille" >
+                   <label class="taille" for="check1">XS</label>
+                 </div> </td>
+                 <td><div class="formrow">
+                   <input class="checkbox" type="radio" name="check" value="S" id="check2" [formControl]="taille">
+                   <label class="taille" for="check2">S</label>
+                 </div></td>
+                 <td><div class="formrow">
+                   <input class="checkbox" type="radio" name="check" value="M" id="check3" [formControl]="taille">
+                   <label class="taille" for="check3">M</label>
+                 </div></td>
+                 <td><div class="formrow">
+                   <input class="checkbox" type="radio" name="check" value="L" id="check4" [formControl]="taille">
+                   <label class="taille" for="check4">L</label>
+                 </div></td>
+                 <td><div class="formrow">
+                   <input class="checkbox" type="radio" name="check" value="XL" id="check5" [formControl]="taille">
+                   <label class="taille" for="check5">XL</label>
+                 </div></td>
+                 <td><div class="formrow">
+                   <input class="checkbox" type="radio" name="check" value="XXL" id="check6" [formControl]="taille">
+                   <label class="taille" for="check6">XXL</label>
+                 </div>
+              
+               </td>
+               
+             </table>
+              
+             </form>
+             </div>
+          
+          <mat-label style="font-weight: bold;" >Quantité :</mat-label>
+            <input matInput [formControl]="quantite" id="quantite" type="number" placeholder="Ex. 3"  min="1" max="{{produit.quantite}}">
+  
+  <br>
+     
+            <button mat-button color="primary" style="background-color: rgb(153, 174, 185);color:rgb(7, 7, 7);margin-top: 25px;" (click)="ajouterAuPanier(produit.id)">Ajouter Au panier</button> 
+           </div>
+           </td>
+  
+           <td id="comm" style="width:13vw;border:solid rgb(223, 223, 223) 1px;padding-left: 5vw;padding-right: 5vw;border-radius:20px">
+             <form class="example-form" style="position:absolute;margin-top:10vh;margin-left:-50px;padding-right: 10vw;">
+   
+               <mat-form-field  id="commentaire" class="example-full-width" appearance="fill">
+                 <mat-label>Ajouter un commentaire</mat-label>
+                 <textarea  matInput placeholder="Ex. It makes me feel..." [formControl]="commentaire"></textarea>    
+                 <button mat-button style="border-radius:8px;background-color:rgb(153, 174, 185);" (click)="insertComment(produit.id)">Publier</button>
+  
+               </mat-form-field>
+  <table style=" overflow-y:scroll;
+  height:42vh;
+  display:block;">
+               <table style="width: 100%;border:solid 1px rgb(177, 175, 175);border-radius: 10px;margin-bottom: 10px;word-break: break-all;padding-right: 10px;word-break: break-all;" *ngFor="let commentaire of commentaires">
+                  <tr style="width: 100%;">
+                    <td>
+                      <div style="text-align:left;padding: 5px;">
+                        <mat-icon style="vertical-align:middle">account_circle</mat-icon>
+                        <span> <strong style="opacity:0.9">{{commentaire.user_nom}} {{commentaire.user_prenom}}</strong></span>
+                       </div>
+                      <div style="width: 100%;padding-left: 10px">{{commentaire.contenu}}</div>
+                  
+                      <div style="width: 100%;text-align:right;font-size: 10px;">{{commentaire.created_at}}</div>
+                  </td>            
+                  </tr>
+  
+              </table>
+            </table>    
+            
+           
+            
+         </form> 
+           </td >
+          
+     </table> 
+       
+  </div>
+  <div *ngIf="!load">
+  
+
+              <mat-spinner></mat-spinner>
+ 
+
+  </div>
+
+
+    
+  
+            
+  
+       
+      
+  
+  
+  
+  

@@ -1,0 +1,16 @@
+table {
+    width: 80vw;
+    margin-left: 13vw;
+    margin-bottom: 10vh;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 80vw;
+    margin-left: 13vw;
+  }
+
+  .primary {
+    background-color: rgb(83, 83, 83);
+    color: #fff;
+}

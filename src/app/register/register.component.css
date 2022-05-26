@@ -1,0 +1,12 @@
+.mat-raised-button {
+    background-color: black;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: none;
+  }
+
+  input[required="required"]:not(.required) {
+    border: 2px solid blue;
+  }
+
+  
